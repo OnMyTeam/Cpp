@@ -4,7 +4,7 @@
 #include <iostream>
 
 using namespace std;
-
+ 
 /*
 진수 : 2진수, 8진수, 16진수
 2진수 : 0 ~ 1
