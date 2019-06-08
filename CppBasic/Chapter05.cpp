@@ -80,7 +80,7 @@ int main(){
     iNumber <<= 16;
     // 하위 16비트를 iLow로 채운다.
     iNumber |= iLow;
-
+ 
     // High 값만 출력
     cout << "High :  " <<(iNumber >> 16) << endl;
     // Low 값만 출력
