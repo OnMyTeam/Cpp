@@ -4,7 +4,7 @@
 //#include : 헤더파일을 이 파일에 포함시키는 기능이다.
 //ex :  <iostream> -> 입출력을 위한 표준기능이 <iostream>에 있다. 이것은 이미 만들어져 있으며 우리가 가져다 쓰는 것이다.
 #include <iostream>
- 
+  
 using namespace std;
 // C++의 시작점은 항상! main()함수 이다.main()함수는 반드시 있어야 한다. 
 int main(){
