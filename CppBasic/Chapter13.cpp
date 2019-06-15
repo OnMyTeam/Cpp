@@ -69,5 +69,15 @@ int main(){
     cout << *pArray << endl;
     cout << *(pArray + 2) << endl;
     cout << *pArray + 100 << endl;
+
+    // 내부적으로 "테스트 문자열" 이라는 문자가 메모리 주소가 잡힌다.
+    // 배열로 문자열을 저장하기 위해 공간이 할당되고 저장하게 된다. 즉, 알아서 Char 배열이 잡힘!
+    char *pText = "테스트 문자열";
+    // 아래와 같이 배열이 잡힌상태에서 값을 변경하려고 해도 안된다. 이유는 const 이기 때문!
+    pText[0] = 'a';
+    pText[1] = 'b';
+    
+    cout << pText << endl;
+    
     return 0;
 }
