@@ -65,6 +65,7 @@ int main(){
      */
     cout << pArray << endl;
     cout << pArray + 2 << endl;
+    // pArray는 배열의 첫번재 시작점 주소를 갖기떄문에 첫번째 인덱스 값이 나옴
     cout << *pArray << endl;
     cout << *(pArray + 2) << endl;
     cout << *pArray + 100 << endl;
