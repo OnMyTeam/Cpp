@@ -1,7 +1,7 @@
 //Chapter18 싱글 링크드리스트 1 기초이론
 
 #include <iostream>
-
+#include <string.h>
 using namespace std;
 /*
     링크드 리스트 : 자료구조의 한 종류이다. 자료구조란 데이터를 관리하는 방법.
@@ -147,7 +147,7 @@ void Output(PLIST pList)
     PNODE pNode = pList -> pBegin;
     while(pNode != NULL)
     {
-        OutputStudent(&pNode->tStudent);
+        OutputStudent(&pNode->tStudent);        
         pNode = pNode -> pNext;
     }
     cout << "학생수 : " << pList -> iSize << endl;
@@ -170,7 +170,62 @@ int OutputMenu()
     return iInput;
 
 }
+void Search(PLIST pList)
+{
+    system("cls");
+    cout << "==================== 학생 탐색 ================="<< endl;       
+    cout << "탐색할 이름을 입력하세요 : "<< endl;
+    char strName[NAME_SIZE] = {};
+    InputString(strName, NAME_SIZE);
+    PNODE pNode = pList -> pBegin;
+    while(pNode != NULL)
+    {
+        if(strcmp(pNode ->tStudent.strName,strName) == 0){
+            OutputStudent(&pNode ->tStudent);
+            system("pause");
+            return;
+        }
+    }    
+    cout << "찾으실 학생이 없습니다." << endl;
+    system("pause");
+}
+void Delete(PLIST pList){
+    system("cls");
+    cout << "==================== 학생 삭제 ================="<< endl;       
+    cout << "삭제할 이름을 입력하세요 : "<< endl;
+    char strName[NAME_SIZE] = {};
+    InputString(strName, NAME_SIZE);
+    PNODE pNode = pList -> pBegin;
+    PNODE pPrev = NULL;
+    while(pNode != NULL)
+    {
+        if(strcmp(pNode ->tStudent.strName,strName) == 0){
+            // 지울 노드의 다음 노드를 얻어온다.
+            PNODE pNext = pNode -> pNext;
 
+            if(pPrev == NULL){
+                delete pNode;
+                pList -> pBegin = pNext;
+                if(pNext == NULL)
+                    pList -> pEnd = NULL;
+            }
+            else{
+                delete pNode;
+                pPrev->pNext = pNext;
+                if(pNext == NULL){
+                    pList ->pEnd = pPrev;
+                }
+            }
+            cout << strName << "학생 삭제완료!." << endl;
+            --pList -> iSize;
+            system("pause");
+            return;
+        }
+    }    
+    cout << "찾으실 학생이 없습니다." << endl;
+    system("pause");
+    return;
+}
 int main(){
 
     LIST tList;
@@ -186,8 +241,10 @@ int main(){
                 Insert(&tList);
                 break;
             case MM_DELETE:
+                Delete(&tList);
                 break;
             case MM_SEARCH:
+                Search(&tList);
                 break;
             case MM_OUTPUT:
                 Output(&tList);
