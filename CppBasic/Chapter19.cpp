@@ -1,4 +1,4 @@
-//Chapter18 싱글 링크드리스트 1 기초이론
+//Chapter19 싱글 링크드리스트2 노드추가,출력,탐색,삭제
 
 #include <iostream>
 #include <string.h>
@@ -185,6 +185,7 @@ void Search(PLIST pList)
             system("pause");
             return;
         }
+        pNode = pNode ->pNext;
     }    
     cout << "찾으실 학생이 없습니다." << endl;
     system("pause");
@@ -221,6 +222,8 @@ void Delete(PLIST pList){
             system("pause");
             return;
         }
+        pPrev = pNode;
+        pNode = pNode -> pNext;
     }    
     cout << "찾으실 학생이 없습니다." << endl;
     system("pause");
@@ -252,5 +255,6 @@ int main(){
 
         }
     }
+    ClearList(&tList);
     return 0;
 }
