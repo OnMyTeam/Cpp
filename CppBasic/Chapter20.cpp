@@ -1,0 +1,150 @@
+//Chapter20 더블 링크드리스트1
+
+// 사용자가 만든 헤더파일을 포함시킬때는 ""안에 적어준다.
+#include "Chapter20.h"
+
+using namespace std;
+
+
+enum MAIN_MENU
+{
+    MM_NONE,
+    MM_INSERT,
+    MM_DELETE,
+    MM_SEARCH,
+    MM_OUTPUT,
+    MM_EXIT
+};
+
+
+void InitList(PLIST pList){
+    pList->pBegin = new NODE;
+    pList->pEnd = new NODE;
+    pList->iSize = 0;
+
+    pList->pBegin->pNext = pList->pEnd;
+    pList->pEnd->pPrev = pList->pBegin;
+    
+    pList->pBegin->pPrev = NULL;
+    pList->pEnd->pPrev = NULL;
+}
+void DestoryList(PLIST pList){
+    PNODE pNode = pList->pBegin;
+    while(pNode !=NULL){
+        PNODE pNext = pNode ->pNext;
+        delete pNode;
+        pNode = pNext;
+    }
+    pList -> iSize = 0;
+    pList -> pBegin = NULL;
+    pList -> pEnd = NULL; 
+}
+int OutputMenu()
+{
+    system("cls");
+    cout << "1. 학생추가" << endl;
+    cout << "2. 학생삭제" << endl;
+    cout << "3. 학생탐색" << endl;
+    cout << "4. 학생출력" << endl;
+    cout << "5. 종료" << endl;
+    cout << "메뉴를 선택하세요 : " ;
+    int iInput = InputInt();
+    if(iInput < MM_NONE || iInput > MM_EXIT)
+        return MM_NONE;
+    
+    return iInput;
+
+}
+
+
+void ClearList(PLIST pList){
+    PNODE pNode = pList -> pBegin;
+
+    while(pNode !=NULL){
+        
+        delete pNode;
+        PNODE pNext = pNode -> pNext;
+        pNode = pNext;
+    }
+    pList -> pBegin = NULL;
+    pList -> pEnd = NULL;
+    pList -> iSize = 0;
+
+}
+void Push_Back(PLIST pList)
+{
+    cin.clear();
+
+    system("cls");
+    cout << "==================== 학생 추가 ================="<< endl;
+    STUDENT tStudent = {};
+    cout << "이름 : ";
+    InputString(tStudent.strName, NAME_SIZE);
+    cout << "학번 : ";
+    tStudent.iNumber = InputInt();
+    cout << "국어 : ";
+    tStudent.iKor = InputInt();
+    cout << "영어 : ";
+    tStudent.iEng = InputInt();
+    cout << "수학 : ";
+    tStudent.iMath = InputInt();    
+
+    tStudent.iTotal = tStudent.iKor + tStudent.iEng + tStudent.iMath;
+    tStudent.fAvg = tStudent.iTotal/3.f;
+
+
+    PNODE pNode = new NODE;
+    pNode -> tStudent = tStudent;
+
+    // 새로 추가되는 노드는 End 노드의 이전노드와 End 노드사이에 추가해야 한다.
+    PNODE pPrev = pList->pEnd->pPrev;
+    // pEnd 노드 이전 노드의 다음으로 추가할 노드를 지정한다.
+    pPrev->pNext = pNode;
+    // 추가할 노드의 이전 노드로 End의 이전 노드를 지정한다.
+    pNode->pPrev = pPrev;
+
+    // 새로 추가할 노드의 다음 노드를 pEnd에 연결한다.
+    pNode->pNext = pList->pBegin;
+
+    // pEnd 노드의 이전 노드로 새로 추가할 노드를 지정한다.
+    pList -> pEnd -> pPrev = pNode;
+    ++pList->iSize;
+
+
+        
+}
+void Output(PLIST pList){
+    system("cls");
+    cout << "==================== 학생 출력 ================="<< endl;    
+    cout << "1. 정방향 출력"<< endl;    
+    cout << "2. 역방향 출력"<< endl;    
+    cout << "메뉴를 선택하세요 : ";
+    int iMenu = InputInt();
+}
+int main(){
+    LIST tList;
+    InitList(&tList); 
+    while(true){
+        int iMenu = OutputMenu();
+        if(iMenu == MM_EXIT)
+            break;
+        
+        switch(iMenu)
+        {
+            case MM_INSERT:
+                Push_Back(&tList);
+                break;
+            case MM_DELETE:
+                //Delete(&tList);
+                break;
+            case MM_SEARCH:
+                //Search(&tList);
+                break;
+            case MM_OUTPUT:
+                //Output(&tList);
+                break;
+
+        }
+    }    
+    return 0;
+}
