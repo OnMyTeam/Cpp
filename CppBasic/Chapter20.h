@@ -69,6 +69,7 @@ void OutputStudent(const PSTUDENT pStudent)
     cout << "¿µ¾î : " << pStudent->iEng << " ¼öÇÐ : " << pStudent->iMath << endl;
     cout << "±¹¾î : " << pStudent->iKor << endl; 
     cout << "ÃÑÇÕ : " << pStudent->iTotal << " Æò±Õ : " << pStudent->fAvg << endl;
+    cout << " "<< endl;
 
 }
 
@@ -77,4 +78,6 @@ void DestoryList(PLIST pList);
 void Push_Back(PLIST pList);
 void Push_Front(PLIST pList);
 void OutputStudent(PLIST pList);
-void Output(PLIST pList);
+void Output(PLIST pList); 
+void Search(PLIST pList);
+void Delete(PLIST pList);
