@@ -8,11 +8,33 @@ using namespace std;
 
 #define NAME_SIZE 32
 #define STUDENT_MAX 10
-
+enum SORT_TYPE
+{
+    ST_NONE,
+    ST_NUMBER,
+    ST_AVG
+    
+};
 enum OUTPUT_TYPE{
     OT_NONE,
     OT_OUTPUT,
     OT_INVERSE
+};
+enum MAIN_MENU
+{
+    MM_NONE,
+    MM_INSERT,
+    MM_DELETE,
+    MM_SEARCH,
+    MM_OUTPUT,
+    MM_SORT,
+    MM_EXIT
+};
+enum SORT_OPTION
+{
+    SO_NONE,
+    SO_CRIVE,
+    SO_DSCRIVE
 };
 int InputInt()
 {
@@ -81,3 +103,4 @@ void OutputStudent(PLIST pList);
 void Output(PLIST pList); 
 void Search(PLIST pList);
 void Delete(PLIST pList);
+void Sort(PLIST pList); 
