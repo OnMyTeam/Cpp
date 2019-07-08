@@ -1,1 +1,60 @@
-//Example1 ì˜ˆì œ 
+//Example1 while¹®À» È°¿ëÇÑ °¡À§¹ÙÀ§º¸°ÔÀÓ
+
+#include <iostream>
+#include <cstdlib>
+#include <stdlib.h>
+#include <time.h>
+
+using namespace std;
+
+enum SRP
+{
+    ROCK=1,
+    SISSORS,
+    PAPER,
+    QUIT,
+    OTHER
+};
+
+
+int main()
+{
+    // seed°ªÀ» ¹Þ¾Æ ³­¼öÇ¥¿¡ ½ÃÀÛ ÁöÁ¡À» ¹Ù²Ù´Â °Í
+    srand((unsigned int)time(0));
+
+    int iPlayer,iAI;
+
+    while(true)
+    {
+        cout << "1. °¡À§" << endl;
+        cout << "2. ¹ÙÀ§" << endl;
+        cout << "3. º¸" << endl;
+        cout << "4. Á¾·á" << endl;        
+        cout << "¸Þ´º¸¦ ¼±ÅÃÇØ ÁÖ¼¼¿ä." << endl;
+        cin >> iPlayer;
+        if(iPlayer < ROCK || iPlayer >=OTHER)
+        {
+            cout << "´Ù½Ã ¼±ÅÃÇØ ÁÖ¼¼¿ä." << endl;
+            continue;
+        }
+        if(iPlayer == QUIT)
+            break;
+        system("cls");
+        iAI = (rand() % 3) + 1;
+        switch (iAI)
+        {
+        case ROCK:
+            cout << "AI ¹ÙÀ§ ¼±ÅÃ" << endl;
+            break;
+        case SISSORS:
+            cout << "AI °¡À§ ¼±ÅÃ" << endl;
+        case PAPER:
+            cout << "AI º¸ ¼±ÅÃ" << endl;            
+        default:
+            break;
+        }
+
+    }
+
+    return 0;
+}
