@@ -14,7 +14,7 @@
 
 출력 예시
 125 125 125
- */
+ */ 
 
 #include<stdio.h>
 #include<cmath>
