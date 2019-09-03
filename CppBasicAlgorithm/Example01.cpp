@@ -43,6 +43,6 @@ int main(void){
         printf("%d\n", irArray[i]);
     }
     
-
+    /*  시간 복잡도 O(N^2 ) */
     return 0;
 }
